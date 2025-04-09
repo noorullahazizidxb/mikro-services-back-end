@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user;
+
+// Import the order.proto file to reference the Order type
+import "order.proto";
+
+service UserService {
+  rpc GetUser (GetUserRequest) returns (UserResponse);
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message UserResponse {
+  string user_id = 1;
+  string name = 2;
+  string email = 3;
+  repeated order.Order orders = 4; // Reference the Order type from order.proto
+}
